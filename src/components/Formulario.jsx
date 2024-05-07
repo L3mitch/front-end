@@ -1,21 +1,23 @@
-import "C:\front-end\src\components\Formulario.module.css"
+import "./Formulario.module.css"
 
-export default function Formulario({handleName, handlePrice, handleStock, name, preco, stock}) {
+export default function Formulario({saveProduct, handleName, handlePrice, handleStock, name, preco, stock}) {
     return (
-        <div class="container">
-        <h2>Cadastro de Produtos</h2>
-        <form onSubmit={saveProduct}>
-            <label htmlfor="nome">Nome:</label>
-            <input type="text" name="nome" value={name} onChange={(e) => handleName(e.target.value)}/>
+        <>
+        <div className="container">
+            <h2>Cadastro de Produtos</h2>
+                <form onSubmit={saveProduct}>
+                    <label htmlFor="nome">Nome:</label>
+                    <input type="text" name="nome" value={name} onChange={(e) => handleName(e)}/>
 
-            <label htmlfor="preco">Preço:</label>
-            <input type="number" name="preco" value={preco} onChange={(e) => handlePrice(e.target.value)}/>
+                    <label htmlFor="preco">Preço:</label>
+                    <input type="number" name="preco" value={preco} onChange={(e) => handlePrice(e)}/>
 
-            <label htmlfor="estoque">Estoque:</label>
-            <input type="number" name="estoque" value={stock} onChange={(e) => handleStock(e.target.value)}/>
+                    <label htmlFor="estoque">Estoque:</label>
+                    <input type="number" name="estoque" value={stock} onChange={(e) => handleStock(e)}/>
 
-            <input type="submit" value="Cadastrar"/>
-        </form>
-    </div>
+                    <input type="submit" value="Cadastrar"/>
+                </form>
+        </div>
+        </>
     )
 }

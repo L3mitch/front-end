@@ -1,6 +1,7 @@
 import React from 'react'
+import "./TabelaProdutos.module.css"
 
-const TabelaProdutos = ({ produtos }) => {
+const TabelaProdutos = ({ produtos, editProduct, deleteProduct }) => {
     return (
         <div>
             <h2>Tabela de Produtos</h2>
@@ -22,8 +23,8 @@ const TabelaProdutos = ({ produtos }) => {
                             <td>{produto.preco}</td>
                             <td>{produto.estoque}</td>
                             <td className="actions">
-                                <button>Editar</button>
-                                <button>Excluir</button>
+                                <button onClick={() => editProduct(produto.id)}>Editar</button>
+                                <button onClick={() => deleteProduct(produto.id)}>Excluir</button>
                             </td>
                         </tr>
                     ))}

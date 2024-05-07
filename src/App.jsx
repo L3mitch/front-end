@@ -1,28 +1,31 @@
+import { useState, useEffect } from 'react'
 import  './App.css'
-// import TabelaProdutos from './components/TabelaProdutos'
-import Formulario from 'C:\front-end\src\components\Formulario.jsx';
+import Formulario from './components/Formulario'
+import TabelaProdutos from './components/TabelaProdutos'
+
 
 function App() {
-//   const produtos = [
-//     {
-//         id: 1,
-//         nome: 'Morango',
-//         preco: 'R$ 50,00',
-//         estoque: 20
-//     },
-//     {
-//         id: 2,
-//         nome: 'Doce de banana',
-//         preco: 'R$ 35,00',
-//         estoque: 15
-//     }
-// ];
+
 const [products, setProducts] = useState([])
 const [id, setId] = useState(1)
 const [name, setName] = useState("")
 const [preco, setPrice] = useState("")
 const [stock, setStock] = useState("")
-const [edit, setEditing] = useState(false)
+const [edit, setEdit] = useState(false)
+
+const url = 'http://localhost:3000/products'
+
+useEffect(() => {
+    //Lista todos os produtos:
+    const getProductsLists = async() => {
+        const res = await fetch(url)
+        const data = await res.json()
+        setProducts(data)
+    }
+
+    getProductsLists();
+
+}, [])
 
 const clearForm = () => {
     setName("")
@@ -30,42 +33,75 @@ const clearForm = () => {
     setStock("")
 }
 
-const saveProduct = (e) => {
-    e.preventDefault();
-    if(!edit){
-        setId(v => v + 1)
-        setProducts([...products, {id, name, preco, stock}])
-    }
+const getProductById = async(id) => {
+    //  Faz a requisição http
+    const res = await fetch(url + `?id=${id}`)
+    const data = await res.json()
 
-    if(edit){
-        const productIndex = products.findIndex(product => product.id === id)
-        products[productIndex] = {id, name, preco, stock}
-        setProducts([products])
-        setEdit(false)
+    // Carrega os dados no formulário para edição:
+    setName(data[0].name)
+    setPrice(data[0].price)
+    setStock(data[0].stock)
+    setId(data[0].id)
+
+    //  Habilita edição:
+    setEdit(true)
+}
+
+
+const saveProduct = async (e) => {
+    e.preventDefault();
+    const saveRequestParams= {
+        method: edit ? "PUT" : "POST",
+        headers: {
+            "content-type": "application/json"
+        },
+        body: JSON.stringify({name, price, stock})
+    }
+    //  Cria url para buscar todos ou apenas um produto
+    const save_url = edit ? url + `/${id}` : url;
+    //  Faz a requisição http
+    const res = await fetch(save_url, saveRequestParams);
+    // Se for cadastro de produto novo:
+    if(!edit) {
+        const newProduct = await res.json();
+        //  Atualização da tabela:
+        setProducts((prevProducts) => [...prevProducts, newProduct])
+    }
+    //  Se for edição/atualização de produto ja cadastrado:
+    if(edit) {
+        const editedProduct = await res.json();
+        //  Atualização da tabela:
+        const editedProductIndex = products.findIndex(prod => prod.id === id)
+        products[editedProductIndex] = editedProduct;
+        setProducts(products)
     }
     clearForm()
+    setEdit(false)
 }
 
-const deleteProduct = (id) => {
-    setProducts(products.filter(prod => prod.id !== id))
-}
+const deleteProduct = async(id) => {
+    //   Faz a requisição http
+    const res = await fetch(url + `/${id}`, {
+        method: "DELETE",
+        headers: {
+            "content-type": "application/json"
+        },
+    })
 
-const editProduct = (id) => {
-    const product = products.find(prod => prod.id === id)
-    setId(product.id)
-    setName(product.name)
-    setPrice(product.price)
-    setStock(product.stock)
-    setEdit(true)
+    const deletedProduct = await res.json()
+    //  Atualização da tabela:
+    setProducts(products.filter(prod => prod.id !== deletedProduct.id))
 }
 
 const handleName = (e) => {setName(e.target.value)}
 const handlePrice = (e) => {setPrice(e.target.value)}
 const handleStock = (e) => {setStock(e.target.value)}
+
   return (
   <>
-  {/* <TabelaProdutos produtos={produtos} /> */}
-  <Formulario name={name} preco={preco} stock={stock} handleName={handleName} handlePrice={handlePrice} handleStock={handleStock} />
+  <TabelaProdutos produtos={products} editProduct={getProductById} deleteProduct={deleteProduct} />
+  <Formulario name={name} preco={preco} stock={stock} handleName={handleName} handlePrice={handlePrice} handleStock={handleStock} saveProduct={saveProduct}/>
   </>
   )
 }
