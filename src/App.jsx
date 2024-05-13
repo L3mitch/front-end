@@ -9,7 +9,7 @@ function App() {
 const [products, setProducts] = useState([])
 const [id, setId] = useState(1)
 const [name, setName] = useState("")
-const [preco, setPrice] = useState("")
+const [price, setPrice] = useState("")
 const [stock, setStock] = useState("")
 const [edit, setEdit] = useState(false)
 
@@ -101,7 +101,7 @@ const handleStock = (e) => {setStock(e.target.value)}
   return (
   <>
   <TabelaProdutos produtos={products} editProduct={getProductById} deleteProduct={deleteProduct} />
-  <Formulario name={name} preco={preco} stock={stock} handleName={handleName} handlePrice={handlePrice} handleStock={handleStock} saveProduct={saveProduct}/>
+  <Formulario name={name} price={price} stock={stock} handleName={handleName} handlePrice={handlePrice} handleStock={handleStock} saveProduct={saveProduct}/>
   </>
   )
 }

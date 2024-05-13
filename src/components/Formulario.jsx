@@ -1,6 +1,6 @@
 import "./Formulario.module.css"
 
-export default function Formulario({saveProduct, handleName, handlePrice, handleStock, name, preco, stock}) {
+export default function Formulario({saveProduct, handleName, handlePrice, handleStock, name, price, stock}) {
     return (
         <>
         <div className="container">
@@ -9,11 +9,11 @@ export default function Formulario({saveProduct, handleName, handlePrice, handle
                     <label htmlFor="nome">Nome:</label>
                     <input type="text" name="nome" value={name} onChange={(e) => handleName(e)}/>
 
-                    <label htmlFor="preco">Preço:</label>
-                    <input type="number" name="preco" value={preco} onChange={(e) => handlePrice(e)}/>
+                    <label htmlFor="price">Preço:</label>
+                    <input type="number" name="price" value={price} onChange={(e) => handlePrice(e)}/>
 
-                    <label htmlFor="estoque">Estoque:</label>
-                    <input type="number" name="estoque" value={stock} onChange={(e) => handleStock(e)}/>
+                    <label htmlFor="stock">Estoque:</label>
+                    <input type="number" name="stock" value={stock} onChange={(e) => handleStock(e)}/>
 
                     <input type="submit" value="Cadastrar"/>
                 </form>

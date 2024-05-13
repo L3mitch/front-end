@@ -19,9 +19,9 @@ const TabelaProdutos = ({ produtos, editProduct, deleteProduct }) => {
                     {produtos.map((produto, index) => (
                         <tr key={produto.id}>
                             <td>{produto.id}</td>
-                            <td>{produto.nome}</td>
-                            <td>{produto.preco}</td>
-                            <td>{produto.estoque}</td>
+                            <td>{produto.name}</td>
+                            <td>{produto.price}</td>
+                            <td>{produto.stock}</td>
                             <td className="actions">
                                 <button onClick={() => editProduct(produto.id)}>Editar</button>
                                 <button onClick={() => deleteProduct(produto.id)}>Excluir</button>
