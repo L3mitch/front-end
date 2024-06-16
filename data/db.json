@@ -1,10 +1,11 @@
 {
-  "products": [
+  "products": [],
+  "users": [
     {
-      "name": "Uva",
-      "price": "15",
-      "stock": "30",
-      "id": "630f"
+      "id": "1c1f",
+      "name": "zeca",
+      "email": "burro@gmail.com",
+      "password": "1234"
     }
   ]
 }

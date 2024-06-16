@@ -1,4 +1,5 @@
 import "./Formulario.module.css"
+import { Link } from "react-router-dom";
 
 export default function Formulario({saveProduct, handleName, handlePrice, handleStock, name, price, stock}) {
     return (
@@ -16,6 +17,7 @@ export default function Formulario({saveProduct, handleName, handlePrice, handle
                     <input type="number" name="stock" value={stock} onChange={(e) => handleStock(e)}/>
 
                     <input type="submit" value="Cadastrar"/>
+                    <button style={{float: 'right'}}><Link to={'/products'}>Voltar</Link></button>
                 </form>
         </div>
         </>

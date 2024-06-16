@@ -1,10 +1,14 @@
 import React from 'react'
 import "./TabelaProdutos.module.css"
+import { Link } from "react-router-dom";
 
 const TabelaProdutos = ({ produtos, editProduct, deleteProduct }) => {
     return (
         <div>
-            <h2>Tabela de Produtos</h2>
+            <div className="memata">
+                <h2 className='memata'>Tabela de Produtos</h2>
+            </div>
+            <button style={{float: 'right'}}><Link to={'/cadastroProd'}>Cadastrar</Link></button>
             <table className="tabela-produtos">
                 <thead>
                     <tr>

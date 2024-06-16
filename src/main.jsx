@@ -5,8 +5,8 @@ import './index.css'
 import { createBrowserRouter, RouterProvider} from 'react-router-dom'
 import Product from './routes/Product.jsx'
 import ErrorPage from './routes/ErrorPage.jsx'
-import Home from './routes/Home.jsx'
-import EditForm from './routes/EditForm.jsx'
+import Login from './routes/Login.jsx'
+import Cadastro from './routes/Cadastro.jsx'
 
 const router = createBrowserRouter([
   {
@@ -16,15 +16,15 @@ const router = createBrowserRouter([
     children: [
       {
         path: '/',
-        element: <Home />
+        element: <Login />
       },
       {
         path: '/products',
         element: <Product />
       },
       {
-        path: '/products/:id/info',
-        element: <EditForm />
+        path: '/cadastroProd',
+        element: <Cadastro />
       }
     ]
   }
