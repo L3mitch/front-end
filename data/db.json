@@ -1,11 +1,17 @@
 {
-  "products": [],
+  "products": [
+    {
+      "id": "97ce",
+      "name": "produto",
+      "price": "22",
+      "stock": "23"
+    }
+  ],
   "users": [
     {
-      "id": "1c1f",
-      "name": "zeca",
-      "email": "burro@gmail.com",
-      "password": "1234"
+      "id": "0b68",
+      "nome": "banana",
+      "senha": "sdjbdgbjfhb"
     }
   ]
 }

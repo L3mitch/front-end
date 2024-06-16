@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import Formulario from '../Components/Formulario'
 
-export default function Cadastro(){
+export default function CadastroProd(){
     
     const [products, setProducts] = useState([])
     const [name, setName] = useState("")

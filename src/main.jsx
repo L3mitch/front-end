@@ -6,7 +6,9 @@ import { createBrowserRouter, RouterProvider} from 'react-router-dom'
 import Product from './routes/Product.jsx'
 import ErrorPage from './routes/ErrorPage.jsx'
 import Login from './routes/Login.jsx'
-import Cadastro from './routes/Cadastro.jsx'
+import CadastroProd from './routes/CadastroProd.jsx'
+import Home from './routes/Home.jsx'
+import CadastroUser from './routes/CadastroUser.jsx'
 
 const router = createBrowserRouter([
   {
@@ -16,7 +18,15 @@ const router = createBrowserRouter([
     children: [
       {
         path: '/',
+        element: <Home />
+      },
+      {
+        path: '/login',
         element: <Login />
+      },
+      {
+        path: '/cadastroUser',
+        element: <CadastroUser />
       },
       {
         path: '/products',
@@ -24,7 +34,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/cadastroProd',
-        element: <Cadastro />
+        element: <CadastroProd />
       }
     ]
   }
