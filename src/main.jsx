@@ -9,6 +9,7 @@ import Login from './routes/Login.jsx'
 import CadastroProd from './routes/CadastroProd.jsx'
 import Home from './routes/Home.jsx'
 import CadastroUser from './routes/CadastroUser.jsx'
+import EditForm from './routes/EditForm.jsx'
 
 const router = createBrowserRouter([
   {
@@ -31,6 +32,10 @@ const router = createBrowserRouter([
       {
         path: '/products',
         element: <Product />
+      },
+      {
+        path: 'editForm/:id',
+        element: <EditForm />
       },
       {
         path: '/cadastroProd',

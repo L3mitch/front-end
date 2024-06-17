@@ -1,16 +1,10 @@
 {
   "products": [
     {
-      "id": "97ce",
-      "name": "produto",
+      "id": "16e0",
+      "name": "ovo",
       "price": "22",
-      "stock": "23"
-    },
-    {
-      "id": "cfb8",
-      "name": "suicidio culposo",
-      "price": "20",
-      "stock": "2"
+      "stock": "200"
     }
   ],
   "users": [
@@ -26,6 +20,11 @@
     },
     {
       "id": "1a7e",
+      "nome": "",
+      "senha": ""
+    },
+    {
+      "id": "15a6",
       "nome": "",
       "senha": ""
     }

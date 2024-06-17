@@ -2,7 +2,7 @@ import React from 'react'
 import "./TabelaProdutos.module.css"
 import { Link } from "react-router-dom";
 
-const TabelaProdutos = ({ produtos, editProduct, deleteProduct }) => {
+const TabelaProdutos = ({ produtos, deleteProduct }) => {
     return (
         <div>
             <div className="memata">
@@ -27,7 +27,7 @@ const TabelaProdutos = ({ produtos, editProduct, deleteProduct }) => {
                             <td>{produto.price}</td>
                             <td>{produto.stock}</td>
                             <td className="actions">
-                                <button onClick={() => editProduct(produto.id)}>Editar</button>
+                                <button><Link to={`/editForm/${produto.id}`}>Bomba</Link></button>
                                 <button onClick={() => deleteProduct(produto.id)}>Excluir</button>
                             </td>
                         </tr>
