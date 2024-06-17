@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import LoginPag from '../Components/LoginPag'
+import LoginPag from '../Components/CadastroPag'
 
 export default function Login(){
     

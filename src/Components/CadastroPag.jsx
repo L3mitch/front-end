@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom"
 
-export default function LoginPag({nome, senha, handleUsername, handlePassword, saveUsername}) {
+export default function CadastroPag({nome, senha, handleUsername, handlePassword, saveUsername}) {
     return (
         <>
         <div className="container">
